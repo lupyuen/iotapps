@@ -113,5 +113,9 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
     @reboot /home/pi/GrovePi/Software/Python/send_loop.sh > /home/pi/send_loop.log &
     ```
 
+0. To enable the crontab log, see http://raspberrypi.stackexchange.com/questions/3741/where-do-cron-error-message-go
+
+0. For info, warning and error messages by send_loop.sh, see /home/pi/send_loop.log
+
 0. Disable the desktop shell to save power
 
