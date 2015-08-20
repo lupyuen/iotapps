@@ -1,5 +1,5 @@
 # IoT Apps
-Connecting a Raspberry Pi 2 with Grove sensors to a Google Sheet through Temboo
+## Connecting a Raspberry Pi 2 with Grove sensors to a Google Sheet through Temboo
 
 Here's the Google Sheet with dashboard and sensor data: https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
 
@@ -98,17 +98,24 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh) also starts [server.py](https://github.com/lupyuen/iotapps/blob/master/server.py), a local Python web server that controls actuators: LED, LCD screen, buzzer
 
-0. To control the actuators remotely via a web browser, send_loop.sh uses ngrok to redirect internet requests to the local Python web server ([server.py](https://github.com/lupyuen/iotapps/blob/master/server.py)):
+0. To control the actuators remotely via a web browser, [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh) uses ngrok to redirect internet requests to the local Python web server ([server.py](https://github.com/lupyuen/iotapps/blob/master/server.py)):
     ```
     ./ngrok http --log "stdout" -config=/home/pi/.ngrok2/ngrok.yml --subdomain=YOURSUBDOMAIN 80 &
     ```
-
 0. The actuators may be controlled remotely as follows:
     - Switch on LED:	http://luppypi.ngrok.io/led_on
     - Switch off LED:	http://luppypi.ngrok.io/led_off
     - Buzz the buzzer:	http://luppypi.ngrok.io/buzz
     - Show a message on the LCD screen:	http://luppypi.ngrok.io/lcd/hello%20from%20github
 
+0. [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh) uses ngrok to expose the Raspberry Pi's SSH port to the internet:
+    ```
+    ./ngrok tcp --log "stdout" -config=/home/pi/.ngrok2/ngrok.yml --remote-addr=YOURHOST.tcp.ngrok.io:YOURPORT 22 &
+    ```
+    So to connect to the Raspberry Pi via SSH from anywhere in the internet, you only need to use:
+    ```
+    ssh YOURHOST.tcp.ngrok.io -p YOURPORT -l pi
+    ```
 0. To start send_loop.sh automatically upon reboot, run
     ```
     sudo crontab -e
