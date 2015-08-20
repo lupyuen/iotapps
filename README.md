@@ -46,24 +46,23 @@ http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-sof
     - https://github.com/lupyuen/iotapps/blob/master/server.py
 
 0. Connect the sensors/actuators to the following ports:
-    ```
-    A0: Light sensor
-    A1: Temperature sensor
-    A2: Loudness sensor
-    D3: Button
-    D4: LED
-    D8: Buzzer
-    I2C-1: RGB LCD Backlight
+    - A0: Light sensor
+    - A1: Temperature sensor
+    - A2: Loudness sensor
+    - D3: Button
+    - D4: LED
+    - D8: Buzzer
+    - I2C-1: RGB LCD Backlight
 
-    Edit cd ~/GrovePi/Software/Python/grove_temperature_sensor.py
-    Change “sensor = 0” to “sensor = 1"
+0. Edit ~/GrovePi/Software/Python/grove_temperature_sensor.py
+    - Change “sensor = 0” to “sensor = 1"
     
-    Edit cd ~/GrovePi/Software/Python/grove_loudness_sensor.py
-    Change "loudness_sensor = 0” to "loudness_sensor = 2"
-    Change "led = 5" to "led = 4"
+0. Edit cd ~/GrovePi/Software/Python/grove_loudness_sensor.py
+    - Change "loudness_sensor = 0” to "loudness_sensor = 2"
+    - Change "led = 5" to "led = 4"
     
-    Check that the sensors and actuators are working:
-    
+0. Check that the sensors and actuators are working:
+    ```
     cd ~/GrovePi/Software/Python
     python grove_led_blink.py 
     python grove_buzzer.py
@@ -85,11 +84,11 @@ https://temboo.com/library/Library/Google/Spreadsheets/
 0. Create a new profile for adding new rows to the above Google Sheet:
 https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
-0. Run send_loop.sh, which calls send_sensor_data.py to get the sensor data and send to Google Sheets via Temboo
+0. Run [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh), which calls [send_sensor_data.py](https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py) to get the sensor data and send to Google Sheets via Temboo
 
-0. send_loop.sh also starts server.py, a local Python web server that controls actuators: LED, LCD screen, buzzer
+0. [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh) also starts [server.py](https://github.com/lupyuen/iotapps/blob/master/server.py), a local Python web server that controls actuators: LED, LCD screen, buzzer
 
-0. To control the actuators remotely via a web browser, send_loop.sh uses ngrok to redirect internet requests to the local Python web server (server.py):
+0. To control the actuators remotely via a web browser, send_loop.sh uses ngrok to redirect internet requests to the local Python web server ([server.py](https://github.com/lupyuen/iotapps/blob/master/server.py)):
     ```
     ./ngrok http --log "stdout" -config=/home/pi/.ngrok2/ngrok.yml --subdomain=YOURSUBDOMAIN 80 &
     ```
@@ -98,7 +97,7 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
     - Switch on LED:	http://luppypi.ngrok.io/led_on
     - Switch off LED:	http://luppypi.ngrok.io/led_off
     - Buzz the buzzer:	http://luppypi.ngrok.io/buzz
-    - Show a message on the LCD screen:	http://luppypi.ngrok.io/lcd/hello+from+github
+    - Show a message on the LCD screen:	http://luppypi.ngrok.io/lcd/hello%20from%20github
 
 0. To start send_loop.sh automatically upon reboot, run
     ```
