@@ -47,6 +47,7 @@ http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-sof
     
 0. Download the following files to /home/pi/GrovePi/Software/Python/:
     - https://github.com/lupyuen/iotapps/blob/master/send_loop.sh
+    - https://github.com/lupyuen/iotapps/blob/master/send_button_data.py
     - https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py
     - https://github.com/lupyuen/iotapps/blob/master/server.py
 
@@ -88,6 +89,8 @@ https://temboo.com/library/Library/Google/Spreadsheets/
 
 0. Create a new Temboo profile for adding new rows to the above Google Sheet, specifying the Google credentials (Client ID, Client Secret, Refresh Token, Access Token), spreadsheet key, worksheet ID:
 https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
+
+0. Edit [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh),  [send_sensor_data.py](https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py), [send_button_data.py](https://github.com/lupyuen/iotapps/blob/master/send_button_data.py) and update the ngrok and Temboo settings accordingly
 
 0. Run [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh), which calls [send_sensor_data.py](https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py) to get the sensor data and send to Google Sheets via Temboo
 
