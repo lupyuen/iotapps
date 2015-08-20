@@ -41,9 +41,9 @@ http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-sof
 0. Download the Linux/ARM version of ngrok from https://ngrok.com/download and copy to /home/pi/GrovePi/Software/Python/
 
 0. Download the following files to /home/pi/GrovePi/Software/Python/:
-    - https://github.com/lupyuen/iotapps/send_loop.sh
-    - https://github.com/lupyuen/iotapps/send_sensor_data.py
-    - https://github.com/lupyuen/iotapps/server.py
+    - https://github.com/lupyuen/iotapps/blob/master/send_loop.sh
+    - https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py
+    - https://github.com/lupyuen/iotapps/blob/master/server.py
 
 0. Connect the sensors/actuators to the following ports:
     ```
