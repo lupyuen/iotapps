@@ -50,7 +50,7 @@ http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-sof
     - https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py
     - https://github.com/lupyuen/iotapps/blob/master/server.py
 
-0. Connect the sensors/actuators to the following ports:
+0. Connect the sensors/actuators to the following ports ([photo here](https://github.com/lupyuen/iotapps/blob/master/raspberry_pi_setup.jpg)):
     - A0: Light sensor
     - A1: Temperature sensor
     - A2: Loudness sensor
