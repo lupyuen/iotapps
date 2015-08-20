@@ -59,16 +59,16 @@ http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-sof
     - D8: Buzzer
     - I2C-1: RGB LCD Backlight
 
-0. Edit ~/GrovePi/Software/Python/grove_temperature_sensor.py
+0. Edit /home/pi/GrovePi/Software/Python/grove_temperature_sensor.py
     - Change “sensor = 0” to “sensor = 1"
     
-0. Edit cd ~/GrovePi/Software/Python/grove_loudness_sensor.py
+0. Edit /home/pi/GrovePi/Software/Python/grove_loudness_sensor.py
     - Change "loudness_sensor = 0” to "loudness_sensor = 2"
     - Change "led = 5" to "led = 4"
     
 0. Check that the sensors and actuators are working:
     ```
-    cd ~/GrovePi/Software/Python
+    cd /home/pi/GrovePi/Software/Python
     python grove_led_blink.py 
     python grove_buzzer.py
     python grove_button.py 
@@ -76,17 +76,17 @@ http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-sof
     python grove_temperature_sensor.py 
     python grove_sound_sensor.py 
     
-    cd ~/GrovePi/Software/Python/grove_rgb_lcd
+    cd /home/pi/GrovePi/Software/Python/grove_rgb_lcd
     python example.py 
     python example2.py 
     ```
-0. Create a Temboo account and install the Python SDK:
+0. Create a Temboo account and download the Python SDK into /home/pi/GrovePi/Software/Python/temboo:
 http://support.temboo.com/entries/21388458-Using-the-Python-SDK
 
-0. Create a Google App account and get the credentials:
+0. Create a Google App account and get the credentials (Client ID, Client Secret, Refresh Token, Access Token):
 https://temboo.com/library/Library/Google/Spreadsheets/
 
-0. Create a new profile for adding new rows to the above Google Sheet:
+0. Create a new Temboo profile for adding new rows to the above Google Sheet, specifying the Google credentials (Client ID, Client Secret, Refresh Token, Access Token), spreadsheet key, worksheet ID:
 https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Run [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh), which calls [send_sensor_data.py](https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py) to get the sensor data and send to Google Sheets via Temboo
