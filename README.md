@@ -117,5 +117,5 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. For info, warning and error messages by send_loop.sh, see /home/pi/send_loop.log
 
-0. Disable the desktop shell to save power
+0. Disable the graphical desktop shell to save power: http://ask.xmodulo.com/disable-desktop-gui-raspberry-pi.html
 
