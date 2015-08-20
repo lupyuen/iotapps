@@ -14,6 +14,9 @@ sleep 10
 ##  Start the HTTP tunnel for remote web access to our web server.
 ./ngrok http --log "stdout" -config=/home/pi/.ngrok2/ngrok.yml --subdomain=??? 80 &
 
+##  Send the button data in a loop.
+python send_button_data.py &
+
 ##  Loop forever, sending sensor data.
 for (( ; ; ))
 do
