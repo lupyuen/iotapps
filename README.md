@@ -1,13 +1,22 @@
 # IoT Apps
 Connecting a Raspberry Pi 2 with Grove sensors to a Google Sheet through Temboo
 
-Google Sheet with dashboard and sensor data: https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
+Here's the Google Sheet with dashboard and sensor data: https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
+
+Photo of the Raspberry Pi 2 with Grove sensors: https://github.com/lupyuen/iotapps/blob/master/raspberry_pi_setup.jpg
 
 ## How it was done
 
+0. You'll need the following items:
+    - http://www.seeedstudio.com/depot/Raspberry-Pi-2-Model-B-w-ARMv7-Quad-Core-1GB-RAM-p-2289.html
+    - http://www.seeedstudio.com/depot/Quick-Starter-Kit-for-Raspberry-Pi-2-Model-B-p-2364.html
+    - http://www.seeedstudio.com/depot/GrovePi-p-2241.html
+    - http://www.seeedstudio.com/depot/Grove-Starter-Kit-for-Arduino-p-1855.html
+
 0. Prepare the SD card with Raspbian:
-https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi  I used the command:
-sudo ./install 2015-05-05-raspbian-wheezy.img 
+https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi  
+
+    I used the command: sudo ./install 2015-05-05-raspbian-wheezy.img 
 
 0. Configure the Pi:
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration?view=all
@@ -27,37 +36,46 @@ https://learn.adafruit.com/adafruit-raspberry-pi-lesson-7-remote-control-with-vn
 0. Set up GrovePi: 
 http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-software/
 
+0. Copy /home/pi/GrovePi/Software/Python/grove_rgb_lcd/grove_rgb_lcd.py to /home/pi/GrovePi/Software/Python/
+
+0. Download the Linux/ARM version of ngrok from https://ngrok.com/download and copy to /home/pi/GrovePi/Software/Python/
+
+0. Download the following files to /home/pi/GrovePi/Software/Python/:
+    - https://github.com/lupyuen/iotapps/send_loop.sh
+    - https://github.com/lupyuen/iotapps/send_sensor_data.py
+    - https://github.com/lupyuen/iotapps/server.py
+
 0. Connect the sensors/actuators to the following ports:
-```
-A0: Light sensor
-A1: Temperature sensor
-A2: Loudness sensor
-D3: Button
-D4: LED
-D8: Buzzer
-I2C-1: RGB LCD Backlight
+    ```
+    A0: Light sensor
+    A1: Temperature sensor
+    A2: Loudness sensor
+    D3: Button
+    D4: LED
+    D8: Buzzer
+    I2C-1: RGB LCD Backlight
 
-Edit cd ~/GrovePi/Software/Python/grove_temperature_sensor.py
-Change “sensor = 0” to “sensor = 1"
-
-Edit cd ~/GrovePi/Software/Python/grove_loudness_sensor.py
-Change "loudness_sensor = 0” to "loudness_sensor = 2"
-Change "led = 5" to "led = 4"
-
-Check that the sensors and actuators are working:
-
-cd ~/GrovePi/Software/Python
-python grove_led_blink.py 
-python grove_buzzer.py
-python grove_button.py 
-python grove_light_sensor.py 
-python grove_temperature_sensor.py 
-python grove_sound_sensor.py 
-
-cd ~/GrovePi/Software/Python/grove_rgb_lcd
-python example.py 
-python example2.py 
-```
+    Edit cd ~/GrovePi/Software/Python/grove_temperature_sensor.py
+    Change “sensor = 0” to “sensor = 1"
+    
+    Edit cd ~/GrovePi/Software/Python/grove_loudness_sensor.py
+    Change "loudness_sensor = 0” to "loudness_sensor = 2"
+    Change "led = 5" to "led = 4"
+    
+    Check that the sensors and actuators are working:
+    
+    cd ~/GrovePi/Software/Python
+    python grove_led_blink.py 
+    python grove_buzzer.py
+    python grove_button.py 
+    python grove_light_sensor.py 
+    python grove_temperature_sensor.py 
+    python grove_sound_sensor.py 
+    
+    cd ~/GrovePi/Software/Python/grove_rgb_lcd
+    python example.py 
+    python example2.py 
+    ```
 0. Create a Temboo account and install the Python SDK:
 http://support.temboo.com/entries/21388458-Using-the-Python-SDK
 
@@ -69,10 +87,27 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Run send_loop.sh, which calls send_sensor_data.py to get the sensor data and send to Google Sheets via Temboo
 
-TODO: Control the actuators remotely via a local Python web server and ngrok:
+0. send_loop.sh also starts server.py, a local Python web server that controls actuators: LED, LCD screen, buzzer
 
-http://www.instructables.com/id/Python-Web-Server-for-your-Raspberry-Pi/?ALLSTEPS
+0. To control the actuators remotely via a web browser, send_loop.sh uses ngrok to redirect internet requests to the local Python web server (server.py):
+    ```
+    ./ngrok http --log "stdout" -config=/home/pi/.ngrok2/ngrok.yml --subdomain=YOURSUBDOMAIN 80 &
+    ```
 
-https://learn.adafruit.com/monitor-your-home-with-the-raspberry-pi-b-plus?view=all
+0. The actuators may be controlled remotely as follows:
+    - Switch on LED:	http://luppypi.ngrok.io/led_on
+    - Switch off LED:	http://luppypi.ngrok.io/led_off
+    - Buzz the buzzer:	http://luppypi.ngrok.io/buzz
+    - Show a message on the LCD screen:	http://luppypi.ngrok.io/lcd/hello+from+github
 
-https://ngrok.com/docs#expose
+0. To start send_loop.sh automatically upon reboot, run
+    ```
+    sudo crontab -e
+    ```
+    and append the line
+    ```
+    @reboot /home/pi/GrovePi/Software/Python/send_loop.sh > /home/pi/send_loop.log &
+    ```
+
+0. Disable the desktop shell to save power
+
