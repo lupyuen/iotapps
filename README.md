@@ -94,6 +94,8 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Run [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh), which calls [send_sensor_data.py](https://github.com/lupyuen/iotapps/blob/master/send_sensor_data.py) to get the sensor data and send to Google Sheets via Temboo
 
+0. [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh) calls [send_button_data.py](https://github.com/lupyuen/iotapps/blob/master/send_button_data.py) to poll the button state repeatedly and update Google Sheets when the button is pressed or released
+
 0. [send_loop.sh](https://github.com/lupyuen/iotapps/blob/master/send_loop.sh) also starts [server.py](https://github.com/lupyuen/iotapps/blob/master/server.py), a local Python web server that controls actuators: LED, LCD screen, buzzer
 
 0. To control the actuators remotely via a web browser, send_loop.sh uses ngrok to redirect internet requests to the local Python web server ([server.py](https://github.com/lupyuen/iotapps/blob/master/server.py)):
