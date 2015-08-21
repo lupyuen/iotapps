@@ -131,3 +131,6 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Disable the graphical desktop shell to save power: http://ask.xmodulo.com/disable-desktop-gui-raspberry-pi.html
 
+## TODO
+
+0. Send SMS when an alert is generated
