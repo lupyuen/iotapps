@@ -131,6 +131,8 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Disable the graphical desktop shell to save power: http://ask.xmodulo.com/disable-desktop-gui-raspberry-pi.html
 
+0. Backup your Raspberry Pi SD card: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
+
 ## TODO
 
 0. Send SMS when an alert is generated
