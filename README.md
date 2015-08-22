@@ -1,5 +1,5 @@
 # IoT Apps
-## Connecting a Raspberry Pi 2 with Grove sensors to a Google Sheet through Temboo
+## Connecting a Raspberry Pi 2 with Grove sensors and actuators to a Google Sheet through Temboo
 
 Here's the Google Sheet with dashboard and sensor data: https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
 
@@ -131,7 +131,7 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Disable the graphical desktop shell to save power: http://ask.xmodulo.com/disable-desktop-gui-raspberry-pi.html
 
-0. Backup your Raspberry Pi SD card: https://www.raspberrypi.org/documentation/linux/filesystem/backup.md
+0. Backup your Raspberry Pi SD card: http://computers.tutsplus.com/articles/how-to-clone-raspberry-pi-sd-cards-using-the-command-line-in-os-x--mac-59911
 
 ## TODO
 
