@@ -137,8 +137,8 @@ https://temboo.com/library/Library/Google/Spreadsheets/AddListRows/
 
 0. Disable the graphical desktop shell to save power: http://ask.xmodulo.com/disable-desktop-gui-raspberry-pi.html
 
-0. Backup your Raspberry Pi SD card: http://computers.tutsplus.com/articles/how-to-clone-raspberry-pi-sd-cards-using-the-command-line-in-os-x--mac-59911
+0. Remember to backup your Raspberry Pi SD card: http://computers.tutsplus.com/articles/how-to-clone-raspberry-pi-sd-cards-using-the-command-line-in-os-x--mac-59911
 
-## TODO
+0. Alerts: I implemented Alerts using simple Google Sheet formulas.  If you click on the “Alert” heading in Column G, you’ll see a formula that checks whether the temperature is too hot (above 31 degrees) and if so, shows the message “Warning: Too hot!”.  The “Alerts” tab shows all rows with alerts.
 
-0. Send SMS when an alert is generated
+0. Notifications: In the “Alerts” tab you can see that when there is an alert generated, the system will make an automated voice call (or SMS).  This is done with a Google App Script connected to Hoiio, the SMS and Voice Telephony service.  Pressing the button sensor also triggers a voice call or SMS. Hoiio offers a free trial with limited messages.
