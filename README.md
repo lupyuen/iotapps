@@ -7,7 +7,7 @@ The Google Sheet includes a realtime dashboard for visualising the sensor data i
 
 I used Grove sensors and actuators, connected to the GrovePi+ shield on a Raspberry Pi 2.
 
-Here's the Google Sheet with dashboard and sensor data: https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
+Here's the Google Sheet with dashboard (see tab "Dashboard") and sensor data (see tab "Data"): https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
 
 Photo of the Raspberry Pi 2 with Grove sensors and actuators: https://github.com/lupyuen/iotapps/blob/master/raspberry_pi_setup.jpg
 
