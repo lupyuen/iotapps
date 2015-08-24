@@ -1,9 +1,15 @@
 # IoT Apps
 ## Connecting a Raspberry Pi 2 with Grove sensors and actuators to a Google Sheet through Temboo
 
+I programmed a Raspberry Pi 2 with Temperature, Light, Sound and Button Sensors to update a Google Sheet spreadsheet with the sensor data every minute.  I also programmed the Raspberry Pi 2 to allow remote control of the LED, Buzzer and LCD Screen from a web browser over the internet.
+
+The Google Sheet includes a realtime dashboard for visualising the sensor data in real time.  The spreadsheet contains rules for triggering alerts (i.e. temperature too high).  I will be notified of the alerts via SMS or an automated voice call using the Hoiio telephony service.
+
+I used Grove sensors and actuators, connected to the GrovePi+ shield on a Raspberry Pi 2.
+
 Here's the Google Sheet with dashboard and sensor data: https://docs.google.com/spreadsheets/d/11WF-G47xkEBf5lIw16d9nWxNcBcUJdirGU-gg56f5Eo/edit?usp=sharing 
 
-Photo of the Raspberry Pi 2 with Grove sensors: https://github.com/lupyuen/iotapps/blob/master/raspberry_pi_setup.jpg
+Photo of the Raspberry Pi 2 with Grove sensors and actuators: https://github.com/lupyuen/iotapps/blob/master/raspberry_pi_setup.jpg
 
 ## How it was done
 
